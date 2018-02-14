@@ -69,7 +69,7 @@ class CriticalCssMake extends CriticalCssCommand
             $router = $this->laravel['router'];
 
             foreach ($router->getRoutes() as $route) {
-                if ($route->methods()[0] === 'GET') {
+                if ($route->methods()[0] === 'GET' && in_array('web', $route->middleware())) {
                     $uris[] = $route->uri();
                 }
             }
